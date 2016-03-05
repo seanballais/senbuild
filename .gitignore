@@ -33,3 +33,6 @@
 
 # Ignore output folders
 bin/
+
+# Ignore test data
+data.txt
