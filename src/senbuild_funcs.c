@@ -179,7 +179,7 @@ buildSentence(char* filename)
     printf("%c.\n\n", 8);
 
     if (strcmp(filename, "") != 0) {
-        fprintf(fp, "\b.");
+        fprintf(fp, "%c.", 8);
         fclose(fp);
     }
 
