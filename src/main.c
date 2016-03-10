@@ -8,7 +8,7 @@
 
 int main(int argc, char *argv[])
 {
-    char filename[40];
+    char filename[40] = "";
     int debug = 0;
 
     parseOptions(argv, argc, &debug, filename);
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
         emitMatrix();
     }
 
-    buildSentence();
+    buildSentence(filename);
 
     return 0;
 }

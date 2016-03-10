@@ -136,8 +136,13 @@ loadWord(char *word, int order)
 }
 
 int
-buildSentence(void)
+buildSentence(char* filename)
 {
+    FILE *fp;
+    if (strcmp(filename, "") != 0) {
+        fp = fopen("data.txt", "a");
+    }
+
     int word = START_SYMBOL;
     int max = 0;
 
@@ -146,10 +151,18 @@ buildSentence(void)
     // Start with a random word
     word = nextWord(word);
 
+    if (strcmp(filename, "") != 0) {
+        fprintf(fp, "\n");
+    }
+
     // Loop unti we have reached the end of the random sequence
     while (word != END_SYMBOL) {
         // Emit the current word
         printf("%s ", wordVector[word]);
+
+        if (strcmp(filename, "") != 0) {
+            fprintf(fp, "%s ", wordVector[word]);
+        }
 
         // Next word please
         word = nextWord(word);
@@ -164,6 +177,11 @@ buildSentence(void)
     }
 
     printf("%c.\n\n", 8);
+
+    if (strcmp(filename, "") != 0) {
+        fprintf(fp, "\b.");
+        fclose(fp);
+    }
 
     return 0;
 }
